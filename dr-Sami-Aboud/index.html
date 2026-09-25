@@ -1243,14 +1243,20 @@ async function submitPrescription() {
     });
 
 
-  } catch (error) {
+} catch (error) {
 
-    console.error(error);
+  console.error("SUBMIT ERROR:", error);
 
-    showMessage(
-      "Failed to submit prescription. Please try again.",
-      "error"
-    );
+  let errorMessage = "Failed to submit prescription.";
+
+  if (error && error.message) {
+    errorMessage += ` ${error.message}`;
+  }
+
+  showMessage(
+    errorMessage,
+    "error"
+  );
 
   } finally {
 
