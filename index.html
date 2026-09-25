@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +16,8 @@
       margin: 0;
       padding: 20px 15px 40px;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background:
+        linear-gradient(180deg, #f8f9fb 0%, #eef1f5 100%);
       color: #222;
     }
 
@@ -24,18 +26,35 @@
       margin: 0 auto;
     }
 
+    /* =================================================
+       HEADER
+    ================================================= */
+
     .header {
       background: white;
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 22px;
+      padding: 24px 20px;
       margin-bottom: 18px;
       text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    }
+
+    .header-icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 12px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      color: white;
+      font-size: 28px;
     }
 
     .header h1 {
       margin: 0 0 8px;
-      font-size: 24px;
+      font-size: 25px;
     }
 
     .doctor {
@@ -44,17 +63,26 @@
     }
 
     .date {
-      margin-top: 6px;
-      color: #666;
+      margin-top: 7px;
+      color: #777;
       font-size: 14px;
     }
 
+    /* =================================================
+       PRODUCT CARDS
+    ================================================= */
+
     .product-card {
       background: white;
-      border-radius: 16px;
+      border-radius: 20px;
       padding: 18px;
       margin-bottom: 15px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+      transition: transform 0.15s ease;
+    }
+
+    .product-card:active {
+      transform: scale(0.99);
     }
 
     .product-image {
@@ -63,21 +91,21 @@
       object-fit: contain;
       display: block;
       margin: 0 auto 12px;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .product-name {
       text-align: center;
       font-size: 18px;
       font-weight: bold;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
     .counter {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 18px;
+      gap: 20px;
     }
 
     .counter button {
@@ -85,36 +113,47 @@
       height: 52px;
       border: none;
       border-radius: 50%;
-      background: #222;
+      background: #111;
       color: white;
       font-size: 28px;
       line-height: 1;
       cursor: pointer;
+      transition: transform 0.1s ease;
     }
 
     .counter button:active {
-      transform: scale(0.95);
+      transform: scale(0.92);
     }
 
     .quantity {
       min-width: 45px;
       text-align: center;
-      font-size: 26px;
+      font-size: 27px;
       font-weight: bold;
     }
 
+    /* =================================================
+       UPLOAD
+    ================================================= */
+
     .upload-area {
-      margin-top: 15px;
+      margin-top: 16px;
     }
 
     .upload-label {
       display: block;
       text-align: center;
       padding: 12px;
-      background: #f0f0f0;
-      border-radius: 10px;
+      background: #f1f2f4;
+      border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
+      color: #333;
+      transition: background 0.15s ease;
+    }
+
+    .upload-label:active {
+      background: #e5e6e8;
     }
 
     .upload-input {
@@ -129,53 +168,142 @@
 
     .file-item {
       background: #f7f7f7;
-      border-radius: 8px;
-      padding: 7px 10px;
+      border-radius: 9px;
+      padding: 8px 10px;
       margin-top: 5px;
       word-break: break-word;
     }
 
+    /* =================================================
+       SUBMIT
+    ================================================= */
+
     .submit-btn {
       width: 100%;
       border: none;
-      border-radius: 14px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 17px;
       font-size: 18px;
       font-weight: bold;
       background: #111;
       color: white;
       cursor: pointer;
-      margin-top: 5px;
+      margin-top: 4px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+      transition: transform 0.1s ease;
+    }
+
+    .submit-btn:active {
+      transform: scale(0.98);
     }
 
     .submit-btn:disabled {
       background: #999;
       cursor: not-allowed;
+      box-shadow: none;
     }
 
-    .quantity-section {
-      margin-top: 30px;
+    /* =================================================
+       SUMMARY BUTTON
+    ================================================= */
+
+    .summary-section {
+      margin-top: 18px;
     }
 
-    .quantity-btn {
+    .summary-btn {
       width: 100%;
       border: none;
-      border-radius: 14px;
-      padding: 15px;
+      border-radius: 16px;
+      padding: 16px;
       font-size: 17px;
       font-weight: bold;
-      background: #e9e9e9;
+      background: white;
       color: #111;
       cursor: pointer;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+      transition: transform 0.1s ease;
     }
 
-    .quantity-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+    .summary-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* =================================================
+       SUMMARY PAGE
+    ================================================= */
+
+    #summaryPage {
+      display: none;
+    }
+
+    .summary-header {
+      background: white;
+      border-radius: 22px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
+    }
+
+    .summary-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 12px;
+      border-radius: 20px;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    }
+
+    .summary-header h2 {
+      margin: 0;
+      font-size: 23px;
+    }
+
+    .summary-doctor {
+      margin-top: 7px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .summary-month {
+      margin-top: 5px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .summary-total {
+      background: #111;
+      color: white;
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+
+    .summary-total-label {
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    .summary-total-number {
+      font-size: 34px;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .summary-total-text {
+      font-size: 13px;
+      opacity: 0.75;
+      margin-top: 2px;
     }
 
     .quantity-results {
-      margin-top: 15px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
@@ -183,15 +311,15 @@
 
     .quantity-card {
       background: white;
-      border-radius: 14px;
-      padding: 12px;
+      border-radius: 18px;
+      padding: 14px 10px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
     }
 
     .quantity-card img {
-      width: 85px;
-      height: 85px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
       margin-bottom: 8px;
     }
@@ -206,7 +334,7 @@
     }
 
     .quantity-number {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
       margin-top: 7px;
     }
@@ -214,19 +342,44 @@
     .quantity-label {
       font-size: 12px;
       color: #777;
+      margin-top: 2px;
     }
 
-    .result-month {
-      text-align: center;
-      margin-top: 12px;
-      color: #666;
-      font-size: 14px;
+    .back-btn {
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      padding: 15px;
+      margin-top: 18px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #e9eaec;
+      color: #111;
+      cursor: pointer;
     }
+
+    .refresh-btn {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 13px;
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: bold;
+      background: white;
+      color: #333;
+      cursor: pointer;
+      box-shadow: 0 2px 9px rgba(0,0,0,0.05);
+    }
+
+    /* =================================================
+       MESSAGE
+    ================================================= */
 
     .message {
       margin-top: 15px;
       padding: 12px;
-      border-radius: 10px;
+      border-radius: 12px;
       text-align: center;
       display: none;
       font-weight: bold;
@@ -242,7 +395,12 @@
       color: #a00000;
     }
 
+    /* =================================================
+       MOBILE
+    ================================================= */
+
     @media (max-width: 450px) {
+
       body {
         padding: 15px 10px 30px;
       }
@@ -259,51 +417,151 @@
       .quantity-results {
         gap: 8px;
       }
+
+      .quantity-card img {
+        width: 78px;
+        height: 78px;
+      }
+
     }
+
   </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-  <div class="header">
-    <h1>Prescription Counter</h1>
+  <!-- =================================================
+       MAIN PAGE
+  ================================================= -->
 
-    <div class="doctor" id="doctorName"></div>
+  <div id="mainPage">
 
-    <div class="date" id="currentDate"></div>
+```
+<div class="header">
+
+  <div class="header-icon">
+    💊
   </div>
 
-  <div id="productsContainer"></div>
+  <h1>
+    Prescription Counter
+  </h1>
+
+  <div
+    class="doctor"
+    id="doctorName"
+  ></div>
+
+  <div
+    class="date"
+    id="currentDate"
+  ></div>
+
+</div>
+
+<div id="productsContainer"></div>
+
+<button
+  class="submit-btn"
+  id="submitBtn"
+  onclick="submitPrescription()"
+>
+  Submit Prescription
+</button>
+
+<div class="summary-section">
 
   <button
-    class="submit-btn"
-    id="submitBtn"
-    onclick="submitPrescription()"
+    class="summary-btn"
+    onclick="openSummary()"
   >
-    Submit Prescription
+    📊 Monthly Prescription Summary
   </button>
 
-  <div class="quantity-section">
+</div>
+```
 
-    <button
-      class="quantity-btn"
-      id="quantityBtn"
-      onclick="getMonthlyQuantity()"
-    >
-      📊 Get All Quantity Prescription
-    </button>
+  </div>
 
-    <div
-      class="quantity-results"
-      id="quantityResults"
-    ></div>
+  <!-- =================================================
+       SUMMARY PAGE
+  ================================================= -->
 
-    <div
-      class="result-month"
-      id="resultMonth"
-    ></div>
+  <div id="summaryPage">
+
+```
+<div class="summary-header">
+
+  <div class="summary-icon">
+    📊
+  </div>
+
+  <h2>
+    Monthly Prescription Summary
+  </h2>
+
+  <div
+    class="summary-doctor"
+    id="summaryDoctor"
+  ></div>
+
+  <div
+    class="summary-month"
+    id="resultMonth"
+  ></div>
+
+</div>
+
+
+<div
+  class="summary-total"
+  id="summaryTotal"
+  style="display:none;"
+>
+
+  <div class="summary-total-label">
+    Total Prescriptions
+  </div>
+
+  <div
+    class="summary-total-number"
+    id="summaryTotalNumber"
+  >
+    0
+  </div>
+
+  <div class="summary-total-text">
+    This Month
+  </div>
+
+</div>
+
+
+<div
+  class="quantity-results"
+  id="quantityResults"
+></div>
+
+
+<button
+  class="refresh-btn"
+  id="refreshBtn"
+  onclick="getMonthlyQuantity()"
+>
+  🔄 Refresh Summary
+</button>
+
+
+<button
+  class="back-btn"
+  onclick="closeSummary()"
+>
+  ← Back to Prescription Counter
+</button>
+```
 
   </div>
 
@@ -313,7 +571,6 @@
   ></div>
 
 </div>
-
 
 <script>
 
@@ -332,7 +589,7 @@ const DOCTOR_NAME = "Dr. Ahmad Kousa";
 // -----------------------------------------------------
 
 const SAVE_WEBHOOK_URL =
-  "https://ids-server.duckdns.org/webhook-test/save-prescription";
+  "https://ids-server.duckdns.org/webhook/save-prescription";
 
 const QUANTITY_WEBHOOK_URL =
   "https://ids-server.duckdns.org/webhook/get-prescription-quantity";
@@ -373,17 +630,20 @@ const PRODUCTS = [
 document.getElementById("doctorName").textContent =
   DOCTOR_NAME;
 
+document.getElementById("summaryDoctor").textContent =
+  DOCTOR_NAME;
 
-// -----------------------------------------------------
+
+// =====================================================
 // CURRENT DATE
-// YYYY-MM-DD
-// -----------------------------------------------------
+// =====================================================
 
 function getCurrentDate() {
 
   const now = new Date();
 
-  const year = now.getFullYear();
+  const year =
+    now.getFullYear();
 
   const month =
     String(now.getMonth() + 1).padStart(2, "0");
@@ -408,16 +668,17 @@ const productsContainer =
 
 PRODUCTS.forEach((product, index) => {
 
-  const card = document.createElement("div");
+  const card =
+    document.createElement("div");
 
-  card.className = "product-card";
+  card.className =
+    "product-card";
 
-  card.dataset.product = product.name;
+  card.dataset.product =
+    product.name;
 
-  // Store quantity
   card._quantity = 0;
 
-  // Store prescription files
   card._prescriptionFiles = [];
 
 
@@ -499,14 +760,19 @@ function changeQuantity(index, amount) {
   const cards =
     document.querySelectorAll(".product-card");
 
-  const card = cards[index];
+  const card =
+    cards[index];
 
   card._quantity =
-    Math.max(0, card._quantity + amount);
+    Math.max(
+      0,
+      card._quantity + amount
+    );
 
   document.getElementById(
     `quantity-${index}`
-  ).textContent = card._quantity;
+  ).textContent =
+    card._quantity;
 }
 
 
@@ -519,9 +785,9 @@ function handleFiles(index, files) {
   const cards =
     document.querySelectorAll(".product-card");
 
-  const card = cards[index];
+  const card =
+    cards[index];
 
-  // Add new files
   for (const file of files) {
 
     card._prescriptionFiles.push(file);
@@ -537,10 +803,13 @@ function renderFiles(index) {
   const cards =
     document.querySelectorAll(".product-card");
 
-  const card = cards[index];
+  const card =
+    cards[index];
 
   const container =
-    document.getElementById(`files-${index}`);
+    document.getElementById(
+      `files-${index}`
+    );
 
   container.innerHTML = "";
 
@@ -550,7 +819,8 @@ function renderFiles(index) {
       const item =
         document.createElement("div");
 
-      item.className = "file-item";
+      item.className =
+        "file-item";
 
       item.textContent =
         `${fileIndex + 1}. ${file.name}`;
@@ -571,12 +841,14 @@ function showMessage(message, type) {
   const element =
     document.getElementById("message");
 
-  element.textContent = message;
+  element.textContent =
+    message;
 
   element.className =
     `message ${type}`;
 
-  element.style.display = "block";
+  element.style.display =
+    "block";
 
   window.scrollTo({
     top: document.body.scrollHeight,
@@ -594,20 +866,20 @@ async function submitPrescription() {
   const submitBtn =
     document.getElementById("submitBtn");
 
-  submitBtn.disabled = true;
+  submitBtn.disabled =
+    true;
 
-  submitBtn.textContent = "Submitting...";
+  submitBtn.textContent =
+    "Submitting...";
 
 
   try {
 
     const cards =
-      document.querySelectorAll(".product-card");
+      document.querySelectorAll(
+        ".product-card"
+      );
 
-
-    // -------------------------------------------------
-    // PRODUCTS DATA
-    // -------------------------------------------------
 
     const productsData = [];
 
@@ -615,15 +887,19 @@ async function submitPrescription() {
     cards.forEach(card => {
 
       const quantity =
-        Number(card._quantity || 0);
+        Number(
+          card._quantity || 0
+        );
 
       if (quantity > 0) {
 
         productsData.push({
 
-          product: card.dataset.product,
+          product:
+            card.dataset.product,
 
-          quantity: quantity
+          quantity:
+            quantity
 
         });
 
@@ -631,10 +907,6 @@ async function submitPrescription() {
 
     });
 
-
-    // -------------------------------------------------
-    // CHECK
-    // -------------------------------------------------
 
     if (productsData.length === 0) {
 
@@ -645,38 +917,27 @@ async function submitPrescription() {
     }
 
 
-    // -------------------------------------------------
-    // FORM DATA
-    // -------------------------------------------------
-
     const formData =
       new FormData();
 
 
-    // Doctor
     formData.append(
       "doctor",
       DOCTOR_NAME
     );
 
 
-    // Date
     formData.append(
       "date",
       getCurrentDate()
     );
 
 
-    // Products
     formData.append(
       "products",
       JSON.stringify(productsData)
     );
 
-
-    // -------------------------------------------------
-    // IMAGES
-    // -------------------------------------------------
 
     let imageIndex = 0;
 
@@ -712,16 +973,11 @@ async function submitPrescription() {
     });
 
 
-    // Total images
     formData.append(
       "imageCount",
       String(imageIndex)
     );
 
-
-    // -------------------------------------------------
-    // SEND TO N8N
-    // -------------------------------------------------
 
     const response =
       await fetch(
@@ -742,17 +998,12 @@ async function submitPrescription() {
     }
 
 
-    // -------------------------------------------------
-    // SUCCESS
-    // -------------------------------------------------
-
     showMessage(
       "Prescription submitted successfully.",
       "success"
     );
 
 
-    // Reset quantities
     cards.forEach(card => {
 
       card._quantity = 0;
@@ -762,16 +1013,26 @@ async function submitPrescription() {
     });
 
 
-    // Reset UI
     cards.forEach((card, index) => {
 
       document.getElementById(
         `quantity-${index}`
-      ).textContent = "0";
+      ).textContent =
+        "0";
 
       document.getElementById(
         `files-${index}`
-      ).innerHTML = "";
+      ).innerHTML =
+        "";
+
+      const fileInput =
+        document.getElementById(
+          `file-${index}`
+        );
+
+      if (fileInput) {
+        fileInput.value = "";
+      }
 
     });
 
@@ -787,7 +1048,8 @@ async function submitPrescription() {
 
   } finally {
 
-    submitBtn.disabled = false;
+    submitBtn.disabled =
+      false;
 
     submitBtn.textContent =
       "Submit Prescription";
@@ -798,39 +1060,120 @@ async function submitPrescription() {
 
 
 // =====================================================
+// OPEN SUMMARY
+// =====================================================
+
+function openSummary() {
+
+  document.getElementById(
+    "mainPage"
+  ).style.display =
+    "none";
+
+  document.getElementById(
+    "summaryPage"
+  ).style.display =
+    "block";
+
+  document.getElementById(
+    "message"
+  ).style.display =
+    "none";
+
+  getMonthlyQuantity();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+// =====================================================
+// CLOSE SUMMARY
+// =====================================================
+
+function closeSummary() {
+
+  document.getElementById(
+    "summaryPage"
+  ).style.display =
+    "none";
+
+  document.getElementById(
+    "mainPage"
+  ).style.display =
+    "block";
+
+  document.getElementById(
+    "message"
+  ).style.display =
+    "none";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+// =====================================================
 // GET MONTHLY QUANTITY
 // =====================================================
 
 async function getMonthlyQuantity() {
 
-  const button =
-    document.getElementById("quantityBtn");
+  const refreshBtn =
+    document.getElementById(
+      "refreshBtn"
+    );
 
   const results =
-    document.getElementById("quantityResults");
+    document.getElementById(
+      "quantityResults"
+    );
 
   const resultMonth =
-    document.getElementById("resultMonth");
+    document.getElementById(
+      "resultMonth"
+    );
+
+  const summaryTotal =
+    document.getElementById(
+      "summaryTotal"
+    );
+
+  const summaryTotalNumber =
+    document.getElementById(
+      "summaryTotalNumber"
+    );
 
 
-  button.disabled = true;
+  refreshBtn.disabled =
+    true;
 
-  button.textContent =
+  refreshBtn.textContent =
     "Loading...";
 
-  results.innerHTML = "";
+  results.innerHTML =
+    "";
 
-  resultMonth.textContent = "";
+  resultMonth.textContent =
+    "";
+
+  summaryTotal.style.display =
+    "none";
 
 
   try {
 
-    // -------------------------------------------------
-    // SEND DOCTOR NAME
-    // -------------------------------------------------
-
     const url =
-      new URL(QUANTITY_WEBHOOK_URL);
+      new URL(
+        QUANTITY_WEBHOOK_URL
+      );
+
 
     url.searchParams.set(
       "doctor",
@@ -838,12 +1181,10 @@ async function getMonthlyQuantity() {
     );
 
 
-    // -------------------------------------------------
-    // REQUEST
-    // -------------------------------------------------
-
     const response =
-      await fetch(url.toString());
+      await fetch(
+        url.toString()
+      );
 
 
     if (!response.ok) {
@@ -865,10 +1206,6 @@ async function getMonthlyQuantity() {
     );
 
 
-    // -------------------------------------------------
-    // GET RESULT
-    // -------------------------------------------------
-
     const result =
       Array.isArray(data)
         ? data[0]
@@ -877,7 +1214,9 @@ async function getMonthlyQuantity() {
 
     if (
       !result ||
-      !Array.isArray(result.products)
+      !Array.isArray(
+        result.products
+      )
     ) {
 
       throw new Error(
@@ -888,14 +1227,35 @@ async function getMonthlyQuantity() {
 
 
     // -------------------------------------------------
-    // RENDER PRODUCTS
+    // TOTAL
+    // -------------------------------------------------
+
+    const total =
+      result.products.reduce(
+        (sum, item) =>
+          sum +
+          (Number(item.quantity) || 0),
+        0
+      );
+
+
+    summaryTotalNumber.textContent =
+      total;
+
+    summaryTotal.style.display =
+      "block";
+
+
+    // -------------------------------------------------
+    // PRODUCTS
     // -------------------------------------------------
 
     result.products.forEach(item => {
 
       const productInfo =
         PRODUCTS.find(
-          p => p.name === item.product
+          p =>
+            p.name === item.product
         );
 
 
@@ -905,7 +1265,9 @@ async function getMonthlyQuantity() {
 
 
       const card =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       card.className =
         "quantity-card";
@@ -933,7 +1295,9 @@ async function getMonthlyQuantity() {
       `;
 
 
-      results.appendChild(card);
+      results.appendChild(
+        card
+      );
 
     });
 
@@ -954,7 +1318,8 @@ async function getMonthlyQuantity() {
 
     console.error(error);
 
-    results.innerHTML = "";
+    results.innerHTML =
+      "";
 
     showMessage(
       "Failed to get monthly quantity. Please try again.",
@@ -963,10 +1328,11 @@ async function getMonthlyQuantity() {
 
   } finally {
 
-    button.disabled = false;
+    refreshBtn.disabled =
+      false;
 
-    button.textContent =
-      "📊 Get All Quantity Prescription";
+    refreshBtn.textContent =
+      "🔄 Refresh Summary";
 
   }
 
