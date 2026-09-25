@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,9 +14,10 @@
 
     body {
       margin: 0;
-      padding: 15px 10px 30px;
+      padding: 20px 15px 40px;
       font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #f8f9fb 0%, #eef1f5 100%);
+      background:
+        linear-gradient(180deg, #f8f9fb 0%, #eef1f5 100%);
       color: #222;
     }
 
@@ -24,109 +26,99 @@
       margin: 0 auto;
     }
 
-    /* =====================================================
-       MAIN HEADER
-    ===================================================== */
+    /* =================================================
+       HEADER
+    ================================================= */
 
     .header {
       background: white;
-      border-radius: 20px;
-      padding: 20px 15px;
-      margin-bottom: 15px;
+      border-radius: 22px;
+      padding: 24px 20px;
+      margin-bottom: 18px;
       text-align: center;
-      box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
     }
 
     .header-icon {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 10px;
-      border-radius: 16px;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 12px;
+      border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #111;
       color: white;
-      font-size: 25px;
+      font-size: 28px;
     }
 
     .header h1 {
-      margin: 0 0 7px;
-      font-size: 23px;
+      margin: 0 0 8px;
+      font-size: 25px;
     }
 
     .doctor {
-      font-size: 17px;
+      font-size: 18px;
       font-weight: bold;
     }
 
     .date {
-      margin-top: 6px;
+      margin-top: 7px;
       color: #777;
-      font-size: 13px;
+      font-size: 14px;
     }
 
-    /* =====================================================
-       PRODUCTS GRID
-    ===================================================== */
-
-    #productsContainer {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
+    /* =================================================
+       PRODUCT CARDS
+    ================================================= */
 
     .product-card {
       background: white;
-      border-radius: 17px;
-      padding: 11px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-      min-width: 0;
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+      transition: transform 0.15s ease;
+    }
+
+    .product-card:active {
+      transform: scale(0.99);
     }
 
     .product-image {
-      width: 105px;
-      height: 105px;
+      width: 150px;
+      height: 150px;
       object-fit: contain;
       display: block;
-      margin: 0 auto 8px;
-      border-radius: 10px;
+      margin: 0 auto 12px;
+      border-radius: 12px;
     }
 
     .product-name {
       text-align: center;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: bold;
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1.2;
-      margin-bottom: 9px;
+      margin-bottom: 15px;
     }
-
-    /* =====================================================
-       COUNTER
-    ===================================================== */
 
     .counter {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
+      gap: 20px;
     }
 
     .counter button {
-      width: 39px;
-      height: 39px;
+      width: 52px;
+      height: 52px;
       border: none;
       border-radius: 50%;
       background: #111;
       color: white;
-      font-size: 22px;
+      font-size: 28px;
       line-height: 1;
       cursor: pointer;
-      padding: 0;
+      transition: transform 0.1s ease;
     }
 
     .counter button:active {
@@ -134,31 +126,34 @@
     }
 
     .quantity {
-      min-width: 28px;
+      min-width: 45px;
       text-align: center;
-      font-size: 22px;
+      font-size: 27px;
       font-weight: bold;
     }
 
-    /* =====================================================
+    /* =================================================
        UPLOAD
-    ===================================================== */
+    ================================================= */
 
     .upload-area {
-      margin-top: 10px;
+      margin-top: 16px;
     }
 
     .upload-label {
       display: block;
       text-align: center;
-      padding: 9px 4px;
+      padding: 12px;
       background: #f1f2f4;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 11px;
       color: #333;
-      line-height: 1.2;
+      transition: background 0.15s ease;
+    }
+
+    .upload-label:active {
+      background: #e5e6e8;
     }
 
     .upload-input {
@@ -166,35 +161,36 @@
     }
 
     .file-list {
-      margin-top: 7px;
-      font-size: 11px;
+      margin-top: 10px;
+      font-size: 13px;
       color: #555;
     }
 
     .file-item {
       background: #f7f7f7;
-      border-radius: 7px;
-      padding: 6px 7px;
-      margin-top: 4px;
+      border-radius: 9px;
+      padding: 8px 10px;
+      margin-top: 5px;
       word-break: break-word;
     }
 
-    /* =====================================================
-       SUBMIT BUTTON
-    ===================================================== */
+    /* =================================================
+       SUBMIT
+    ================================================= */
 
     .submit-btn {
       width: 100%;
       border: none;
-      border-radius: 15px;
-      padding: 15px;
-      font-size: 17px;
+      border-radius: 16px;
+      padding: 17px;
+      font-size: 18px;
       font-weight: bold;
       background: #111;
       color: white;
       cursor: pointer;
-      margin-top: 12px;
-      box-shadow: 0 4px 13px rgba(0,0,0,0.12);
+      margin-top: 4px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+      transition: transform 0.1s ease;
     }
 
     .submit-btn:active {
@@ -207,34 +203,35 @@
       box-shadow: none;
     }
 
-    /* =====================================================
+    /* =================================================
        SUMMARY BUTTON
-    ===================================================== */
+    ================================================= */
 
     .summary-section {
-      margin-top: 10px;
+      margin-top: 18px;
     }
 
     .summary-btn {
       width: 100%;
       border: none;
-      border-radius: 15px;
-      padding: 14px;
-      font-size: 16px;
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 17px;
       font-weight: bold;
       background: white;
       color: #111;
       cursor: pointer;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+      transition: transform 0.1s ease;
     }
 
     .summary-btn:active {
       transform: scale(0.98);
     }
 
-    /* =====================================================
+    /* =================================================
        SUMMARY PAGE
-    ===================================================== */
+    ================================================= */
 
     #summaryPage {
       display: none;
@@ -242,124 +239,124 @@
 
     .summary-header {
       background: white;
-      border-radius: 20px;
-      padding: 22px 15px;
+      border-radius: 22px;
+      padding: 24px 20px;
       text-align: center;
-      margin-bottom: 12px;
-      box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+      margin-bottom: 15px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.07);
     }
 
     .summary-icon {
-      width: 55px;
-      height: 55px;
-      margin: 0 auto 10px;
-      border-radius: 17px;
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 12px;
+      border-radius: 20px;
       background: #111;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 27px;
+      font-size: 30px;
     }
 
     .summary-header h2 {
       margin: 0;
-      font-size: 21px;
+      font-size: 23px;
     }
 
     .summary-doctor {
-      margin-top: 6px;
+      margin-top: 7px;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 16px;
     }
 
     .summary-month {
       margin-top: 5px;
       color: #777;
-      font-size: 13px;
+      font-size: 14px;
     }
-
-    /* =====================================================
-       TOTAL
-    ===================================================== */
 
     .summary-total {
       background: #111;
       color: white;
-      border-radius: 17px;
-      padding: 17px;
+      border-radius: 18px;
+      padding: 18px;
       text-align: center;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 13px rgba(0,0,0,0.12);
+      margin-bottom: 15px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
     }
 
     .summary-total-label {
-      font-size: 12px;
+      font-size: 13px;
       opacity: 0.75;
     }
 
     .summary-total-number {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: bold;
-      margin-top: 3px;
+      margin-top: 4px;
     }
 
     .summary-total-text {
-      font-size: 12px;
+      font-size: 13px;
       opacity: 0.75;
       margin-top: 2px;
     }
 
-    /* =====================================================
-       SUMMARY PRODUCTS
-    ===================================================== */
-
     .quantity-results {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 9px;
+      gap: 12px;
     }
 
     .quantity-card {
       background: white;
-      border-radius: 16px;
-      padding: 11px 8px;
+      border-radius: 18px;
+      padding: 14px 10px;
       text-align: center;
-      box-shadow: 0 3px 11px rgba(0,0,0,0.06);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
     }
 
     .quantity-card img {
-      width: 75px;
-      height: 75px;
+      width: 90px;
+      height: 90px;
       object-fit: contain;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
 
     .quantity-product {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: bold;
-      min-height: 34px;
+      min-height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
-      line-height: 1.2;
     }
 
     .quantity-number {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
-      margin-top: 6px;
+      margin-top: 7px;
     }
 
     .quantity-label {
-      font-size: 11px;
+      font-size: 12px;
       color: #777;
       margin-top: 2px;
     }
 
-    /* =====================================================
-       SUMMARY BUTTONS
-    ===================================================== */
+    .back-btn {
+      width: 100%;
+      border: none;
+      border-radius: 16px;
+      padding: 15px;
+      margin-top: 18px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #e9eaec;
+      color: #111;
+      cursor: pointer;
+    }
 
     .refresh-btn {
       width: 100%;
@@ -375,36 +372,17 @@
       box-shadow: 0 2px 9px rgba(0,0,0,0.05);
     }
 
-    .refresh-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .back-btn {
-      width: 100%;
-      border: none;
-      border-radius: 14px;
-      padding: 14px;
-      margin-top: 9px;
-      font-size: 15px;
-      font-weight: bold;
-      background: #e9eaec;
-      color: #111;
-      cursor: pointer;
-    }
-
-    /* =====================================================
+    /* =================================================
        MESSAGE
-    ===================================================== */
+    ================================================= */
 
     .message {
-      margin-top: 12px;
-      padding: 11px;
-      border-radius: 11px;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 12px;
       text-align: center;
       display: none;
       font-weight: bold;
-      font-size: 14px;
     }
 
     .success {
@@ -417,72 +395,23 @@
       color: #a00000;
     }
 
-    /* =====================================================
+    /* =================================================
        MOBILE
-    ===================================================== */
+    ================================================= */
 
     @media (max-width: 450px) {
 
       body {
-        padding: 10px 7px 25px;
-      }
-
-      .header {
-        padding: 17px 12px;
-      }
-
-      .header-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 23px;
-      }
-
-      .header h1 {
-        font-size: 21px;
-      }
-
-      .doctor {
-        font-size: 16px;
-      }
-
-      #productsContainer {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-
-      .product-card {
-        padding: 9px;
-        border-radius: 15px;
+        padding: 15px 10px 30px;
       }
 
       .product-image {
-        width: 95px;
-        height: 95px;
+        width: 135px;
+        height: 135px;
       }
 
       .product-name {
-        font-size: 13px;
-        min-height: 36px;
-      }
-
-      .counter {
-        gap: 5px;
-      }
-
-      .counter button {
-        width: 37px;
-        height: 37px;
-        font-size: 21px;
-      }
-
-      .quantity {
-        min-width: 25px;
-        font-size: 21px;
-      }
-
-      .upload-label {
-        font-size: 10px;
-        padding: 8px 3px;
+        font-size: 17px;
       }
 
       .quantity-results {
@@ -490,151 +419,151 @@
       }
 
       .quantity-card img {
-        width: 70px;
-        height: 70px;
+        width: 78px;
+        height: 78px;
       }
 
     }
 
   </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-  <!-- =====================================================
+  <!-- =================================================
        MAIN PAGE
-  ===================================================== -->
+  ================================================= -->
 
   <div id="mainPage">
 
-    <div class="header">
+```
+<div class="header">
 
-      <div class="header-icon">
-        💊
-      </div>
+  <div class="header-icon">
+    💊
+  </div>
 
-      <h1>
-        Prescription Counter
-      </h1>
+  <h1>
+    Prescription Counter
+  </h1>
 
-      <div
-        class="doctor"
-        id="doctorName"
-      ></div>
+  <div
+    class="doctor"
+    id="doctorName"
+  ></div>
 
-      <div
-        class="date"
-        id="currentDate"
-      ></div>
+  <div
+    class="date"
+    id="currentDate"
+  ></div>
 
-    </div>
+</div>
 
+<div id="productsContainer"></div>
 
-    <div id="productsContainer"></div>
+<button
+  class="submit-btn"
+  id="submitBtn"
+  onclick="submitPrescription()"
+>
+  Submit Prescription
+</button>
 
+<div class="summary-section">
 
-    <button
-      class="submit-btn"
-      id="submitBtn"
-      onclick="submitPrescription()"
-    >
-      Submit Prescription
-    </button>
+  <button
+    class="summary-btn"
+    onclick="openSummary()"
+  >
+    📊 Monthly Prescription Summary
+  </button>
 
-
-    <div class="summary-section">
-
-      <button
-        class="summary-btn"
-        onclick="openSummary()"
-      >
-        📊 Monthly Prescription Summary
-      </button>
-
-    </div>
+</div>
+```
 
   </div>
 
-
-  <!-- =====================================================
+  <!-- =================================================
        SUMMARY PAGE
-  ===================================================== -->
+  ================================================= -->
 
   <div id="summaryPage">
 
-    <div class="summary-header">
+```
+<div class="summary-header">
 
-      <div class="summary-icon">
-        📊
-      </div>
-
-      <h2>
-        Monthly Prescription Summary
-      </h2>
-
-      <div
-        class="summary-doctor"
-        id="summaryDoctor"
-      ></div>
-
-      <div
-        class="summary-month"
-        id="resultMonth"
-      ></div>
-
-    </div>
-
-
-    <div
-      class="summary-total"
-      id="summaryTotal"
-      style="display:none;"
-    >
-
-      <div class="summary-total-label">
-        Total Prescriptions
-      </div>
-
-      <div
-        class="summary-total-number"
-        id="summaryTotalNumber"
-      >
-        0
-      </div>
-
-      <div class="summary-total-text">
-        This Month
-      </div>
-
-    </div>
-
-
-    <div
-      class="quantity-results"
-      id="quantityResults"
-    ></div>
-
-
-    <button
-      class="refresh-btn"
-      id="refreshBtn"
-      onclick="getMonthlyQuantity()"
-    >
-      🔄 Refresh Summary
-    </button>
-
-
-    <button
-      class="back-btn"
-      onclick="closeSummary()"
-    >
-      ← Back to Prescription Counter
-    </button>
-
+  <div class="summary-icon">
+    📊
   </div>
 
+  <h2>
+    Monthly Prescription Summary
+  </h2>
+
+  <div
+    class="summary-doctor"
+    id="summaryDoctor"
+  ></div>
+
+  <div
+    class="summary-month"
+    id="resultMonth"
+  ></div>
+
+</div>
+
+
+<div
+  class="summary-total"
+  id="summaryTotal"
+  style="display:none;"
+>
+
+  <div class="summary-total-label">
+    Total Prescriptions
+  </div>
+
+  <div
+    class="summary-total-number"
+    id="summaryTotalNumber"
+  >
+    0
+  </div>
+
+  <div class="summary-total-text">
+    This Month
+  </div>
+
+</div>
+
+
+<div
+  class="quantity-results"
+  id="quantityResults"
+></div>
+
+
+<button
+  class="refresh-btn"
+  id="refreshBtn"
+  onclick="getMonthlyQuantity()"
+>
+  🔄 Refresh Summary
+</button>
+
+
+<button
+  class="back-btn"
+  onclick="closeSummary()"
+>
+  ← Back to Prescription Counter
+</button>
+```
+
+  </div>
 
   <div
     class="message"
@@ -642,7 +571,6 @@
   ></div>
 
 </div>
-
 
 <script>
 
@@ -656,7 +584,6 @@
 
 const DOCTOR_NAME = "Dr. Ahmad Kousa";
 
-
 // -----------------------------------------------------
 // WEBHOOKS
 // -----------------------------------------------------
@@ -666,7 +593,6 @@ const SAVE_WEBHOOK_URL =
 
 const QUANTITY_WEBHOOK_URL =
   "https://ids-server.duckdns.org/webhook/get-prescription-quantity";
-
 
 // -----------------------------------------------------
 // PRODUCTS
@@ -1105,9 +1031,7 @@ async function submitPrescription() {
         );
 
       if (fileInput) {
-
         fileInput.value = "";
-
       }
 
     });
@@ -1336,9 +1260,7 @@ async function getMonthlyQuantity() {
 
 
       if (!productInfo) {
-
         return;
-
       }
 
 
