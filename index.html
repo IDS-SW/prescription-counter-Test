@@ -1,0 +1,766 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Prescription Counter</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px 14px 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: white;
+      border-radius: 18px;
+      padding: 22px 18px;
+      margin-bottom: 18px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .title {
+      margin: 0 0 10px;
+      font-size: 25px;
+      font-weight: 700;
+    }
+
+    .doctor {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .date {
+      font-size: 15px;
+      color: #6b7280;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .product-image-wrapper {
+      width: 100%;
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #fafafa;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .product-name {
+      text-align: center;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .counter-button {
+      width: 58px;
+      height: 58px;
+      border: none;
+      border-radius: 50%;
+      font-size: 32px;
+      font-weight: 400;
+      cursor: pointer;
+      background: #e9edf2;
+      color: #111827;
+      touch-action: manipulation;
+    }
+
+    .counter-button:active {
+      transform: scale(0.94);
+    }
+
+    .quantity {
+      min-width: 50px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .attach-button {
+      width: 100%;
+      min-height: 50px;
+      border: 2px dashed #b8c0ca;
+      border-radius: 12px;
+      background: #fafbfc;
+      color: #374151;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 10px;
+      touch-action: manipulation;
+    }
+
+    .attach-button:active {
+      transform: scale(0.98);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .image-item {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #eee;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .remove-image {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 17px;
+      line-height: 28px;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .image-count {
+      text-align: center;
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 8px;
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 60px;
+      border: none;
+      border-radius: 16px;
+      background: #111827;
+      color: white;
+      font-size: 19px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      touch-action: manipulation;
+    }
+
+    .submit-button:active {
+      transform: scale(0.98);
+    }
+
+    .status {
+      display: none;
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 16px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 12px 10px 30px;
+      }
+
+      .product-image-wrapper {
+        height: 165px;
+      }
+
+      .product-name {
+        font-size: 17px;
+      }
+
+      .counter-button {
+        width: 54px;
+        height: 54px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1 class="title">Prescription Counter</h1>
+
+    <div class="doctor">
+      Dr. Ahmad Kousa
+    </div>
+
+    <div class="date" id="currentDate">
+      Loading date...
+    </div>
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- Physiologica Iso Spray -->
+  <!-- ================================================= -->
+
+  <div class="product-card" data-product="Physiologica Iso Spray">
+
+    <div class="product-image-wrapper">
+      <img
+        class="product-image"
+        src="physiologica-iso.jpg"
+        alt="Physiologica Iso Spray"
+      >
+    </div>
+
+    <div class="product-name">
+      Physiologica Iso Spray
+    </div>
+
+    <div class="counter">
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, -1)"
+      >
+        −
+      </button>
+
+      <div class="quantity">0</div>
+
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, 1)"
+      >
+        +
+      </button>
+    </div>
+
+    <input
+      class="file-input"
+      type="file"
+      accept="image/*"
+      multiple
+      onchange="handleImages(this)"
+    >
+
+    <button
+      class="attach-button"
+      type="button"
+      onclick="openFilePicker(this)"
+    >
+      📷 Attach Images
+    </button>
+
+    <div class="images"></div>
+    <div class="image-count"></div>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- Physiologica Hyper Spray -->
+  <!-- ================================================= -->
+
+  <div class="product-card" data-product="Physiologica Hyper Spray">
+
+    <div class="product-image-wrapper">
+      <img
+        class="product-image"
+        src="physiologica-hyper.jpg"
+        alt="Physiologica Hyper Spray"
+      >
+    </div>
+
+    <div class="product-name">
+      Physiologica Hyper Spray
+    </div>
+
+    <div class="counter">
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, -1)"
+      >
+        −
+      </button>
+
+      <div class="quantity">0</div>
+
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, 1)"
+      >
+        +
+      </button>
+    </div>
+
+    <input
+      class="file-input"
+      type="file"
+      accept="image/*"
+      multiple
+      onchange="handleImages(this)"
+    >
+
+    <button
+      class="attach-button"
+      type="button"
+      onclick="openFilePicker(this)"
+    >
+      📷 Attach Images
+    </button>
+
+    <div class="images"></div>
+    <div class="image-count"></div>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- Privitus -->
+  <!-- ================================================= -->
+
+  <div class="product-card" data-product="Privitus">
+
+    <div class="product-image-wrapper">
+      <img
+        class="product-image"
+        src="privitus.jpg"
+        alt="Privitus"
+      >
+    </div>
+
+    <div class="product-name">
+      Privitus
+    </div>
+
+    <div class="counter">
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, -1)"
+      >
+        −
+      </button>
+
+      <div class="quantity">0</div>
+
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, 1)"
+      >
+        +
+      </button>
+    </div>
+
+    <input
+      class="file-input"
+      type="file"
+      accept="image/*"
+      multiple
+      onchange="handleImages(this)"
+    >
+
+    <button
+      class="attach-button"
+      type="button"
+      onclick="openFilePicker(this)"
+    >
+      📷 Attach Images
+    </button>
+
+    <div class="images"></div>
+    <div class="image-count"></div>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- ToulaCough -->
+  <!-- ================================================= -->
+
+  <div class="product-card" data-product="ToulaCough">
+
+    <div class="product-image-wrapper">
+      <img
+        class="product-image"
+        src="toulacough.jpg"
+        alt="ToulaCough"
+      >
+    </div>
+
+    <div class="product-name">
+      ToulaCough
+    </div>
+
+    <div class="counter">
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, -1)"
+      >
+        −
+      </button>
+
+      <div class="quantity">0</div>
+
+      <button
+        class="counter-button"
+        type="button"
+        onclick="changeQuantity(this, 1)"
+      >
+        +
+      </button>
+    </div>
+
+    <input
+      class="file-input"
+      type="file"
+      accept="image/*"
+      multiple
+      onchange="handleImages(this)"
+    >
+
+    <button
+      class="attach-button"
+      type="button"
+      onclick="openFilePicker(this)"
+    >
+      📷 Attach Images
+    </button>
+
+    <div class="images"></div>
+    <div class="image-count"></div>
+
+  </div>
+
+
+  <!-- ================================================= -->
+  <!-- Submit -->
+  <!-- ================================================= -->
+
+  <button
+    class="submit-button"
+    type="button"
+    onclick="submitPrescriptions()"
+  >
+    SUBMIT
+  </button>
+
+  <div
+    class="status"
+    id="status"
+  ></div>
+
+</div>
+
+
+<script>
+
+  // =====================================================
+  // DATE
+  // =====================================================
+
+  function setCurrentDate() {
+
+    const now = new Date();
+
+    const options = {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    };
+
+    const formattedDate = now.toLocaleDateString("en-GB", options);
+
+    document.getElementById("currentDate").textContent = formattedDate;
+  }
+
+
+  // =====================================================
+  // CHANGE QUANTITY
+  // =====================================================
+
+  function changeQuantity(button, change) {
+
+    const card = button.closest(".product-card");
+
+    const quantityElement =
+      card.querySelector(".quantity");
+
+    let quantity =
+      parseInt(quantityElement.textContent, 10) || 0;
+
+    quantity += change;
+
+    if (quantity < 0) {
+      quantity = 0;
+    }
+
+    quantityElement.textContent = quantity;
+  }
+
+
+  // =====================================================
+  // OPEN FILE PICKER
+  // =====================================================
+
+  function openFilePicker(button) {
+
+    const card = button.closest(".product-card");
+
+    const fileInput =
+      card.querySelector(".file-input");
+
+    fileInput.click();
+  }
+
+
+  // =====================================================
+  // HANDLE IMAGES
+  // =====================================================
+
+  function handleImages(input) {
+
+    const card =
+      input.closest(".product-card");
+
+    const imagesContainer =
+      card.querySelector(".images");
+
+    const imageCount =
+      card.querySelector(".image-count");
+
+    const files =
+      Array.from(input.files);
+
+    files.forEach(file => {
+
+      if (!file.type.startsWith("image/")) {
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function(event) {
+
+        const wrapper =
+          document.createElement("div");
+
+        wrapper.className = "image-item";
+
+        const image =
+          document.createElement("img");
+
+        image.src =
+          event.target.result;
+
+        const removeButton =
+          document.createElement("button");
+
+        removeButton.className =
+          "remove-image";
+
+        removeButton.type =
+          "button";
+
+        removeButton.textContent =
+          "×";
+
+        removeButton.onclick =
+          function() {
+            wrapper.remove();
+            updateImageCount(card);
+          };
+
+        wrapper.appendChild(image);
+        wrapper.appendChild(removeButton);
+
+        imagesContainer.appendChild(wrapper);
+
+        updateImageCount(card);
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    /*
+      Reset input so the doctor can select
+      the same image again later if needed.
+    */
+
+    input.value = "";
+  }
+
+
+  // =====================================================
+  // IMAGE COUNT
+  // =====================================================
+
+  function updateImageCount(card) {
+
+    const count =
+      card.querySelectorAll(".image-item").length;
+
+    const imageCount =
+      card.querySelector(".image-count");
+
+    if (count === 0) {
+
+      imageCount.textContent = "";
+
+    } else {
+
+      imageCount.textContent =
+        count === 1
+          ? "1 image attached"
+          : count + " images attached";
+    }
+  }
+
+
+  // =====================================================
+  // SUBMIT
+  // =====================================================
+
+  function submitPrescriptions() {
+
+    const cards =
+      document.querySelectorAll(".product-card");
+
+    const selectedProducts = [];
+
+    cards.forEach(card => {
+
+      const product =
+        card.dataset.product;
+
+      const quantity =
+        parseInt(
+          card.querySelector(".quantity").textContent,
+          10
+        ) || 0;
+
+      const imageCount =
+        card.querySelectorAll(".image-item").length;
+
+      if (quantity > 0) {
+
+        selectedProducts.push({
+          product: product,
+          quantity: quantity,
+          imageCount: imageCount
+        });
+
+      }
+
+    });
+
+
+    const status =
+      document.getElementById("status");
+
+
+    if (selectedProducts.length === 0) {
+
+      status.style.display = "block";
+
+      status.textContent =
+        "Please select at least one product.";
+
+      return;
+    }
+
+
+    console.log({
+      doctor: "Dr. Ahmad Kousa",
+      date: new Date().toISOString(),
+      products: selectedProducts
+    });
+
+
+    status.style.display = "block";
+
+    status.textContent =
+      "✅ Ready to submit";
+
+
+    /*
+      n8n Webhook will be connected here
+      in the next step.
+    */
+  }
+
+
+  // =====================================================
+  // INITIALIZE
+  // =====================================================
+
+  setCurrentDate();
+
+</script>
+
+</body>
+</html>
+```
