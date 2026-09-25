@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
 
   <title>Prescription Counter</title>
 
@@ -24,7 +27,15 @@
       max-width: 600px;
       margin: 0 auto;
     }
+html {
+  touch-action: manipulation;
+}
 
+body {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
     /* =================================================
        HEADER
     ================================================= */
