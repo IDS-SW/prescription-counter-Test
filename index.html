@@ -188,23 +188,47 @@
       margin-top: 8px;
     }
 
-    .submit-button {
+    /* =================================================
+       BUTTONS
+       ================================================= */
+
+    .submit-button,
+    .quantity-button {
       width: 100%;
       min-height: 60px;
       border: none;
       border-radius: 16px;
-      background: #111827;
       color: white;
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 700;
       cursor: pointer;
       margin-top: 8px;
       touch-action: manipulation;
     }
 
-    .submit-button:active {
+    .submit-button {
+      background: #111827;
+    }
+
+    .quantity-button {
+      background: #374151;
+      margin-top: 12px;
+    }
+
+    .submit-button:active,
+    .quantity-button:active {
       transform: scale(0.98);
     }
+
+    .submit-button:disabled,
+    .quantity-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* =================================================
+       STATUS
+       ================================================= */
 
     .status {
       display: none;
@@ -217,7 +241,81 @@
       font-weight: 600;
     }
 
+    /* =================================================
+       MONTHLY RESULTS
+       ================================================= */
+
+    .monthly-section {
+      display: none;
+      background: white;
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 18px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .monthly-title {
+      text-align: center;
+      margin: 0 0 6px;
+      font-size: 21px;
+      font-weight: 700;
+    }
+
+    .monthly-subtitle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .monthly-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .monthly-product {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
+
+    .monthly-product-image {
+      width: 100%;
+      height: 100px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 8px;
+      border-radius: 10px;
+      background: white;
+    }
+
+    .monthly-product-name {
+      font-size: 14px;
+      font-weight: 700;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .monthly-quantity {
+      margin-top: 7px;
+      font-size: 25px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .monthly-label {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
     @media (max-width: 420px) {
+
       body {
         padding: 12px 10px 30px;
       }
@@ -234,6 +332,14 @@
         width: 54px;
         height: 54px;
       }
+
+      .monthly-product-image {
+        height: 85px;
+      }
+
+      .monthly-product-name {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
@@ -242,31 +348,47 @@
 
 <div class="container">
 
+  <!-- ================================================= -->
+  <!-- HEADER -->
+  <!-- ================================================= -->
+
   <div class="header">
-    <h1 class="title">Prescription Counter</h1>
+
+    <h1 class="title">
+      Prescription Counter
+    </h1>
 
     <div class="doctor">
       Dr. Ahmad Kousa
     </div>
 
-    <div class="date" id="currentDate">
+    <div
+      class="date"
+      id="currentDate"
+    >
       Loading date...
     </div>
+
   </div>
 
 
   <!-- ================================================= -->
-  <!-- Physiologica Iso Spray -->
+  <!-- PHYSIOLOGICA ISO SPRAY -->
   <!-- ================================================= -->
 
-  <div class="product-card" data-product="Physiologica Iso Spray">
+  <div
+    class="product-card"
+    data-product="Physiologica Iso Spray"
+  >
 
     <div class="product-image-wrapper">
+
       <img
         class="product-image"
         src="physiologica-iso.jpg"
         alt="Physiologica Iso Spray"
       >
+
     </div>
 
     <div class="product-name">
@@ -274,6 +396,7 @@
     </div>
 
     <div class="counter">
+
       <button
         class="counter-button"
         type="button"
@@ -282,7 +405,9 @@
         −
       </button>
 
-      <div class="quantity">0</div>
+      <div class="quantity">
+        0
+      </div>
 
       <button
         class="counter-button"
@@ -291,6 +416,7 @@
       >
         +
       </button>
+
     </div>
 
     <input
@@ -310,23 +436,29 @@
     </button>
 
     <div class="images"></div>
+
     <div class="image-count"></div>
 
   </div>
 
 
   <!-- ================================================= -->
-  <!-- Physiologica Hyper Spray -->
+  <!-- PHYSIOLOGICA HYPER SPRAY -->
   <!-- ================================================= -->
 
-  <div class="product-card" data-product="Physiologica Hyper Spray">
+  <div
+    class="product-card"
+    data-product="Physiologica Hyper Spray"
+  >
 
     <div class="product-image-wrapper">
+
       <img
         class="product-image"
         src="physiologica-hyper.jpg"
         alt="Physiologica Hyper Spray"
       >
+
     </div>
 
     <div class="product-name">
@@ -334,6 +466,7 @@
     </div>
 
     <div class="counter">
+
       <button
         class="counter-button"
         type="button"
@@ -342,7 +475,9 @@
         −
       </button>
 
-      <div class="quantity">0</div>
+      <div class="quantity">
+        0
+      </div>
 
       <button
         class="counter-button"
@@ -351,6 +486,7 @@
       >
         +
       </button>
+
     </div>
 
     <input
@@ -370,23 +506,29 @@
     </button>
 
     <div class="images"></div>
+
     <div class="image-count"></div>
 
   </div>
 
 
   <!-- ================================================= -->
-  <!-- Privitus -->
+  <!-- PRIVITUS -->
   <!-- ================================================= -->
 
-  <div class="product-card" data-product="Privitus">
+  <div
+    class="product-card"
+    data-product="Privitus"
+  >
 
     <div class="product-image-wrapper">
+
       <img
         class="product-image"
         src="privitus.jpg"
         alt="Privitus"
       >
+
     </div>
 
     <div class="product-name">
@@ -394,6 +536,7 @@
     </div>
 
     <div class="counter">
+
       <button
         class="counter-button"
         type="button"
@@ -402,7 +545,9 @@
         −
       </button>
 
-      <div class="quantity">0</div>
+      <div class="quantity">
+        0
+      </div>
 
       <button
         class="counter-button"
@@ -411,6 +556,7 @@
       >
         +
       </button>
+
     </div>
 
     <input
@@ -430,23 +576,29 @@
     </button>
 
     <div class="images"></div>
+
     <div class="image-count"></div>
 
   </div>
 
 
   <!-- ================================================= -->
-  <!-- ToulaCough -->
+  <!-- TOULACOUGH -->
   <!-- ================================================= -->
 
-  <div class="product-card" data-product="ToulaCough">
+  <div
+    class="product-card"
+    data-product="ToulaCough"
+  >
 
     <div class="product-image-wrapper">
+
       <img
         class="product-image"
         src="toulacough.jpg"
         alt="ToulaCough"
       >
+
     </div>
 
     <div class="product-name">
@@ -454,6 +606,7 @@
     </div>
 
     <div class="counter">
+
       <button
         class="counter-button"
         type="button"
@@ -462,7 +615,9 @@
         −
       </button>
 
-      <div class="quantity">0</div>
+      <div class="quantity">
+        0
+      </div>
 
       <button
         class="counter-button"
@@ -471,6 +626,7 @@
       >
         +
       </button>
+
     </div>
 
     <input
@@ -490,27 +646,76 @@
     </button>
 
     <div class="images"></div>
+
     <div class="image-count"></div>
 
   </div>
 
 
   <!-- ================================================= -->
-  <!-- Submit -->
+  <!-- SUBMIT -->
   <!-- ================================================= -->
 
   <button
     class="submit-button"
+    id="submitButton"
     type="button"
     onclick="submitPrescriptions()"
   >
     SUBMIT
   </button>
 
+
+  <!-- ================================================= -->
+  <!-- GET MONTHLY QUANTITY -->
+  <!-- ================================================= -->
+
+  <button
+    class="quantity-button"
+    id="quantityButton"
+    type="button"
+    onclick="getMonthlyQuantity()"
+  >
+    📊 Get All Quantity Prescription
+  </button>
+
+
+  <!-- ================================================= -->
+  <!-- STATUS -->
+  <!-- ================================================= -->
+
   <div
     class="status"
     id="status"
   ></div>
+
+
+  <!-- ================================================= -->
+  <!-- MONTHLY RESULTS -->
+  <!-- ================================================= -->
+
+  <div
+    class="monthly-section"
+    id="monthlySection"
+  >
+
+    <div class="monthly-title">
+      Monthly Prescription Quantity
+    </div>
+
+    <div
+      class="monthly-subtitle"
+      id="monthlySubtitle"
+    >
+      Current month
+    </div>
+
+    <div
+      class="monthly-grid"
+      id="monthlyGrid"
+    ></div>
+
+  </div>
 
 </div>
 
@@ -518,12 +723,65 @@
 <script>
 
   // =====================================================
+  // SETTINGS
+  // =====================================================
+
+  const DOCTOR_NAME =
+    "Dr. Ahmad Kousa";
+
+
+  /*
+    TEST URL FOR SAVING PRESCRIPTIONS
+
+    We keep this on webhook-test for now
+    because we are currently testing the
+    image upload workflow.
+  */
+
+  const SAVE_WEBHOOK_URL =
+    "https://ids-server.duckdns.org/webhook-test/save-prescription";
+
+
+  /*
+    PRODUCTION URL FOR GETTING MONTHLY QUANTITY
+
+    This connects to the workflow:
+    Get Prescription Quantity
+  */
+
+  const QUANTITY_WEBHOOK_URL =
+    "https://ids-server.duckdns.org/webhook/get-prescription-quantity";
+
+
+  // =====================================================
+  // PRODUCT INFORMATION
+  // =====================================================
+
+  const PRODUCT_IMAGES = {
+
+    "Physiologica Iso Spray":
+      "physiologica-iso.jpg",
+
+    "Physiologica Hyper Spray":
+      "physiologica-hyper.jpg",
+
+    "Privitus":
+      "privitus.jpg",
+
+    "ToulaCough":
+      "toulacough.jpg"
+
+  };
+
+
+  // =====================================================
   // DATE
   // =====================================================
 
   function setCurrentDate() {
 
-    const now = new Date();
+    const now =
+      new Date();
 
     const options = {
       day: "2-digit",
@@ -531,9 +789,16 @@
       year: "numeric"
     };
 
-    const formattedDate = now.toLocaleDateString("en-GB", options);
+    const formattedDate =
+      now.toLocaleDateString(
+        "en-GB",
+        options
+      );
 
-    document.getElementById("currentDate").textContent = formattedDate;
+    document.getElementById(
+      "currentDate"
+    ).textContent =
+      formattedDate;
   }
 
 
@@ -543,13 +808,17 @@
 
   function changeQuantity(button, change) {
 
-    const card = button.closest(".product-card");
+    const card =
+      button.closest(".product-card");
 
     const quantityElement =
       card.querySelector(".quantity");
 
     let quantity =
-      parseInt(quantityElement.textContent, 10) || 0;
+      parseInt(
+        quantityElement.textContent,
+        10
+      ) || 0;
 
     quantity += change;
 
@@ -557,7 +826,8 @@
       quantity = 0;
     }
 
-    quantityElement.textContent = quantity;
+    quantityElement.textContent =
+      quantity;
   }
 
 
@@ -567,7 +837,8 @@
 
   function openFilePicker(button) {
 
-    const card = button.closest(".product-card");
+    const card =
+      button.closest(".product-card");
 
     const fileInput =
       card.querySelector(".file-input");
@@ -588,11 +859,16 @@
     const imagesContainer =
       card.querySelector(".images");
 
-    const imageCount =
-      card.querySelector(".image-count");
-
     const files =
       Array.from(input.files);
+
+
+    if (!card._prescriptionFiles) {
+
+      card._prescriptionFiles = [];
+
+    }
+
 
     files.forEach(file => {
 
@@ -600,56 +876,126 @@
         return;
       }
 
-      const reader = new FileReader();
 
-      reader.onload = function(event) {
+      const fileIndex =
+        card._prescriptionFiles.length;
 
-        const wrapper =
-          document.createElement("div");
 
-        wrapper.className = "image-item";
+      /*
+        Keep the original File object.
+      */
 
-        const image =
-          document.createElement("img");
+      card._prescriptionFiles.push(
+        file
+      );
 
-        image.src =
-          event.target.result;
 
-        const removeButton =
-          document.createElement("button");
+      const reader =
+        new FileReader();
 
-        removeButton.className =
-          "remove-image";
 
-        removeButton.type =
-          "button";
+      reader.onload =
+        function(event) {
 
-        removeButton.textContent =
-          "×";
+          const wrapper =
+            document.createElement(
+              "div"
+            );
 
-        removeButton.onclick =
-          function() {
-            wrapper.remove();
-            updateImageCount(card);
-          };
+          wrapper.className =
+            "image-item";
 
-        wrapper.appendChild(image);
-        wrapper.appendChild(removeButton);
+          wrapper.dataset.fileIndex =
+            fileIndex;
 
-        imagesContainer.appendChild(wrapper);
 
-        updateImageCount(card);
-      };
+          const image =
+            document.createElement(
+              "img"
+            );
 
-      reader.readAsDataURL(file);
+          image.src =
+            event.target.result;
+
+
+          const removeButton =
+            document.createElement(
+              "button"
+            );
+
+          removeButton.className =
+            "remove-image";
+
+          removeButton.type =
+            "button";
+
+          removeButton.textContent =
+            "×";
+
+
+          removeButton.onclick =
+            function() {
+
+              const index =
+                parseInt(
+                  wrapper.dataset.fileIndex,
+                  10
+                );
+
+
+              if (
+                !isNaN(index) &&
+                card._prescriptionFiles[index]
+              ) {
+
+                card._prescriptionFiles[index] =
+                  null;
+
+              }
+
+
+              wrapper.remove();
+
+              updateImageCount(
+                card
+              );
+            };
+
+
+          wrapper.appendChild(
+            image
+          );
+
+          wrapper.appendChild(
+            removeButton
+          );
+
+          imagesContainer.appendChild(
+            wrapper
+          );
+
+
+          updateImageCount(
+            card
+          );
+
+        };
+
+
+      reader.readAsDataURL(
+        file
+      );
+
     });
 
+
     /*
-      Reset input so the doctor can select
-      the same image again later if needed.
+      Allow selecting more images
+      later, including the same file.
     */
 
     input.value = "";
+
   }
 
 
@@ -660,14 +1006,24 @@
   function updateImageCount(card) {
 
     const count =
-      card.querySelectorAll(".image-item").length;
+      (
+        card._prescriptionFiles ||
+        []
+      ).filter(
+        file => file !== null
+      ).length;
+
 
     const imageCount =
-      card.querySelector(".image-count");
+      card.querySelector(
+        ".image-count"
+      );
+
 
     if (count === 0) {
 
-      imageCount.textContent = "";
+      imageCount.textContent =
+        "";
 
     } else {
 
@@ -675,41 +1031,66 @@
         count === 1
           ? "1 image attached"
           : count + " images attached";
+
     }
+
   }
 
 
   // =====================================================
-  // SUBMIT
+  // COLLECT PRODUCTS
   // =====================================================
 
-  function submitPrescriptions() {
+  function collectProducts() {
 
     const cards =
-      document.querySelectorAll(".product-card");
+      document.querySelectorAll(
+        ".product-card"
+      );
 
-    const selectedProducts = [];
+    const products = [];
+
 
     cards.forEach(card => {
 
       const product =
         card.dataset.product;
 
+
       const quantity =
         parseInt(
-          card.querySelector(".quantity").textContent,
+          card.querySelector(
+            ".quantity"
+          ).textContent,
           10
         ) || 0;
 
-      const imageCount =
-        card.querySelectorAll(".image-item").length;
 
-      if (quantity > 0) {
+      const files =
+        (
+          card._prescriptionFiles ||
+          []
+        ).filter(
+          file => file !== null
+        );
 
-        selectedProducts.push({
-          product: product,
-          quantity: quantity,
-          imageCount: imageCount
+
+      if (
+        quantity > 0 ||
+        files.length > 0
+      ) {
+
+        products.push({
+
+          product:
+            product,
+
+          quantity:
+            quantity,
+
+          imageCount:
+            files.length
+
         });
 
       }
@@ -717,13 +1098,39 @@
     });
 
 
+    return products;
+
+  }
+
+
+  // =====================================================
+  // SUBMIT PRESCRIPTIONS
+  // =====================================================
+
+  async function submitPrescriptions() {
+
     const status =
-      document.getElementById("status");
+      document.getElementById(
+        "status"
+      );
 
 
-    if (selectedProducts.length === 0) {
+    const submitButton =
+      document.getElementById(
+        "submitButton"
+      );
 
-      status.style.display = "block";
+
+    const products =
+      collectProducts();
+
+
+    if (
+      products.length === 0
+    ) {
+
+      status.style.display =
+        "block";
 
       status.textContent =
         "Please select at least one product.";
@@ -732,23 +1139,495 @@
     }
 
 
-    console.log({
-      doctor: "Dr. Ahmad Kousa",
-      date: new Date().toISOString(),
-      products: selectedProducts
-    });
+    submitButton.disabled =
+      true;
+
+    submitButton.textContent =
+      "SENDING...";
 
 
-    status.style.display = "block";
+    status.style.display =
+      "block";
 
     status.textContent =
-      "✅ Ready to submit";
+      "Sending prescription data...";
 
 
-    /*
-      n8n Webhook will be connected here
-      in the next step.
-    */
+    try {
+
+      const formData =
+        new FormData();
+
+
+      // Doctor
+      formData.append(
+        "doctor",
+        DOCTOR_NAME
+      );
+
+
+      // Exact date/time
+      const submissionDate =
+        new Date().toISOString();
+
+
+      formData.append(
+        "date",
+        submissionDate
+      );
+
+
+      // Product information
+      formData.append(
+        "products",
+        JSON.stringify(
+          products
+        )
+      );
+
+
+      let imageNumber =
+        0;
+
+
+      const cards =
+        document.querySelectorAll(
+          ".product-card"
+        );
+
+
+      cards.forEach(card => {
+
+        const product =
+          card.dataset.product;
+
+
+        const files =
+          (
+            card._prescriptionFiles ||
+            []
+          ).filter(
+            file => file !== null
+          );
+
+
+        files.forEach(file => {
+
+          const fieldName =
+            "image_" +
+            imageNumber;
+
+
+          /*
+            Actual binary image.
+          */
+
+          formData.append(
+            fieldName,
+            file,
+            file.name
+          );
+
+
+          /*
+            Product linked to this image.
+          */
+
+          formData.append(
+            "image_" +
+            imageNumber +
+            "_product",
+            product
+          );
+
+
+          imageNumber++;
+
+        });
+
+      });
+
+
+      formData.append(
+        "imageCount",
+        String(imageNumber)
+      );
+
+
+      // =================================================
+      // SEND
+      // =================================================
+
+      const response =
+        await fetch(
+          SAVE_WEBHOOK_URL,
+          {
+            method: "POST",
+            body: formData
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "HTTP " +
+          response.status
+        );
+
+      }
+
+
+      let result = null;
+
+
+      try {
+
+        result =
+          await response.json();
+
+      } catch (error) {
+
+        // Response isn't JSON.
+
+      }
+
+
+      console.log(
+        "n8n response:",
+        result
+      );
+
+
+      status.style.display =
+        "block";
+
+      status.textContent =
+        "✅ Submitted successfully";
+
+
+      submitButton.textContent =
+        "SUBMITTED";
+
+
+    } catch (error) {
+
+      console.error(
+        "Submit error:",
+        error
+      );
+
+
+      status.style.display =
+        "block";
+
+      status.textContent =
+        "❌ Could not submit. Please try again.";
+
+
+      submitButton.disabled =
+        false;
+
+      submitButton.textContent =
+        "SUBMIT";
+
+    }
+
+  }
+
+
+  // =====================================================
+  // GET MONTHLY QUANTITY
+  // =====================================================
+
+  async function getMonthlyQuantity() {
+
+    const button =
+      document.getElementById(
+        "quantityButton"
+      );
+
+
+    const status =
+      document.getElementById(
+        "status"
+      );
+
+
+    const section =
+      document.getElementById(
+        "monthlySection"
+      );
+
+
+    const grid =
+      document.getElementById(
+        "monthlyGrid"
+      );
+
+
+    const subtitle =
+      document.getElementById(
+        "monthlySubtitle"
+      );
+
+
+    button.disabled =
+      true;
+
+    button.textContent =
+      "LOADING...";
+
+
+    status.style.display =
+      "block";
+
+    status.textContent =
+      "Getting monthly prescription quantity...";
+
+
+    try {
+
+      const response =
+        await fetch(
+          QUANTITY_WEBHOOK_URL,
+          {
+            method: "GET"
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "HTTP " +
+          response.status
+        );
+
+      }
+
+
+      const data =
+        await response.json();
+
+
+      console.log(
+        "Monthly quantity:",
+        data
+      );
+
+
+      // =================================================
+      // CLEAR OLD RESULTS
+      // =================================================
+
+      grid.innerHTML =
+        "";
+
+
+      // =================================================
+      // MONTH
+      // =================================================
+
+      if (data.month) {
+
+        subtitle.textContent =
+          "Month: " +
+          data.month;
+
+      } else {
+
+        subtitle.textContent =
+          "Current month";
+
+      }
+
+
+      // =================================================
+      // PRODUCTS
+      // =================================================
+
+      const products =
+        Array.isArray(
+          data.products
+        )
+          ? data.products
+          : [];
+
+
+      /*
+        Always display the four products
+        in the same order.
+      */
+
+      const productOrder = [
+
+        "Physiologica Iso Spray",
+
+        "Physiologica Hyper Spray",
+
+        "Privitus",
+
+        "ToulaCough"
+
+      ];
+
+
+      productOrder.forEach(
+        productName => {
+
+          const found =
+            products.find(
+              item =>
+                item.product ===
+                productName
+            );
+
+
+          const quantity =
+            found
+              ? Number(
+                  found.quantity
+                ) || 0
+              : 0;
+
+
+          const card =
+            document.createElement(
+              "div"
+            );
+
+          card.className =
+            "monthly-product";
+
+
+          const image =
+            document.createElement(
+              "img"
+            );
+
+          image.className =
+            "monthly-product-image";
+
+          image.src =
+            PRODUCT_IMAGES[
+              productName
+            ];
+
+          image.alt =
+            productName;
+
+
+          const name =
+            document.createElement(
+              "div"
+            );
+
+          name.className =
+            "monthly-product-name";
+
+          name.textContent =
+            productName;
+
+
+          const quantityElement =
+            document.createElement(
+              "div"
+            );
+
+          quantityElement.className =
+            "monthly-quantity";
+
+          quantityElement.textContent =
+            quantity;
+
+
+          const label =
+            document.createElement(
+              "div"
+            );
+
+          label.className =
+            "monthly-label";
+
+          label.textContent =
+            "prescriptions";
+
+
+          card.appendChild(
+            image
+          );
+
+          card.appendChild(
+            name
+          );
+
+          card.appendChild(
+            quantityElement
+          );
+
+          card.appendChild(
+            label
+          );
+
+
+          grid.appendChild(
+            card
+          );
+
+        }
+      );
+
+
+      // =================================================
+      // SHOW RESULTS
+      // =================================================
+
+      section.style.display =
+        "block";
+
+
+      status.style.display =
+        "none";
+
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "🔄 Refresh Monthly Quantity";
+
+
+      // Scroll smoothly to results
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+
+    } catch (error) {
+
+      console.error(
+        "Quantity error:",
+        error
+      );
+
+
+      status.style.display =
+        "block";
+
+      status.textContent =
+        "❌ Could not get monthly quantity.";
+
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        "📊 Get All Quantity Prescription";
+
+    }
+
   }
 
 
